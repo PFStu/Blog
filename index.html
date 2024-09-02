@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bow's Blog</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+            transition: background 0.3s, color 0.3s;
+        }
+        a p {
+            background: linear-gradient(to right, blue, purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        a {
+            text-decoration: none;
+            background: linear-gradient(to right, blue, purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .date {
+            text-align: right;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        .sidebar {
+            flex: 1;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s;
+            transition: .3s;
+        }
+        .sidebar:hover {
+            transform: scale(1.02);
+        }
+        .sidebar h2 {
+            margin-top: 0;
+            color: #444;
+            transition: color 0.3s;
+        }
+        .content {
+            flex: 3;
+            padding: 20px;
+        }
+        .content h1 {
+            color: #007bff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            transition: color 0.3s;
+        }
+        .post {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: background 0.3s, box-shadow 0.3s;
+            transition: .3s;
+        }
+        .post:hover {
+            transform: scale(1.05);
+        }
+        .post h2 {
+            margin-top: 0;
+            color: #333;
+            transition: color 0.3s;
+        }
+        .post p {
+            line-height: 1.6;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .theme-toggle:hover {
+            background: #0056b3;
+        }
+        body.dark-theme {
+            background: #222;
+            color: #f4f4f4;
+        }
+        body.dark-theme .container {
+            background: #333;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+        body.dark-theme .sidebar {
+            background: #444;
+        }
+        body.dark-theme .sidebar h2 {
+            color: #f4f4f4;
+        }
+        body.dark-theme .content h1 {
+            color: #6caaff;
+        }
+        body.dark-theme .post {
+            background: #555;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
+        }
+        body.dark-theme .post h2 {
+            color: #f4f4f4;
+        }
+        body.dark-theme .footer {
+            background: #111;
+        }
+        .table-of-contents {
+            margin-top: 20px;
+        }
+        .table-of-contents ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .table-of-contents li {
+            margin-bottom: 10px;
+        }
+        .table-of-contents a {
+            text-decoration: none;
+            color: #007bff;
+            transition: color 0.3s, font-size 0.3s;
+        }
+        .table-of-contents a:hover {
+            color: #0056b3;
+        }
+        body.dark-theme .table-of-contents a {
+            color: #6caaff;
+        }
+        body.dark-theme .table-of-contents a:hover {
+            color: #99ccff;
+        }
+        .table-of-contents a.active {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">theme</button>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Bow</h2>
+            <p>Chengdu, Sichuan, China</p>
+            <a href="https://bowblogs.netlify.app" target="_blank"><p>https://bowblogs.netlify.app</p></a>
+            <a href="https://pfstu.netlify.app" target="_blank"><p>https://pfstu.netlify.app</p></a>
+            <div class="table-of-contents" id="tableOfContents">
+                <h2>目录</h2>
+                <ul></ul>
+            </div>
+        </div>
+        <div class="content">
+            <h1>Blogs</h1>
+            <div class="post">
+                <h2 id="post1">PF Windows7</h2>
+                <p>给张瑞做的专业定制的win7，搭载了许多常用软件，32bit</p>
+                <p class="date">2024/8</p>
+            </div>
+            <div class="post">
+                <h2 id="post2">Pixel PE</h2>
+                <p>用莫老师的教程，基于雷电PE成功搓出来一坨PE</p>
+                <p>详情见<a href="https://pfstu.github.io/PE/Index.html" target="_blank">https://pfstu.github.io/PE/Index.html</a></p>
+                <p class="date">2024/8</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+        }
+
+        function generateTableOfContents() {
+            const toc = document.getElementById('tableOfContents').querySelector('ul');
+            const headings = document.querySelectorAll('.content h2');
+            headings.forEach(heading => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.textContent = heading.textContent;
+                a.href = `#${heading.id}`;
+                li.appendChild(a);
+                toc.appendChild(li);
+            });
+        }
+
+        function highlightActiveLink() {
+            const tocLinks = document.querySelectorAll('.table-of-contents a');
+            const posts = document.querySelectorAll('.post');
+
+            posts.forEach(post => {
+                const rect = post.getBoundingClientRect();
+                const isVisible = (rect.top >= 0 && rect.bottom <= window.innerHeight);
+
+                if (isVisible) {
+                    const targetId = post.querySelector('h2').id;
+                    tocLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${targetId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            generateTableOfContents();
+            highlightActiveLink();
+        });
+
+        window.addEventListener('scroll', highlightActiveLink);
+    </script>
+</body>
+</html>
