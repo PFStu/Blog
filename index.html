@@ -155,9 +155,37 @@
             font-size: 1.2em;
             font-weight: bold;
         }
+	#popup {
+            display: none;
+            position: relative;
+            top: 50px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+	    border-radius: 20px;
+        }
+        #popup button {
+	    position: fixed;
+	    left: 50%;
+	    transform: translateX(-50%);
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+	    border-radius: 20px;
+        }
     </style>
 </head>
 <body>
+    <div id="popup">
+        <p>请使用电脑,“查看电脑网页”或调整分辨率进行查看</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
     <button class="theme-toggle" onclick="toggleTheme()">Theme Toggle</button>
     <div class="container">
         <div class="sidebar">
@@ -235,6 +263,19 @@
         });
 
         window.addEventListener('scroll', highlightActiveLink);
+        function isMobileDevice() {
+            return window.matchMedia("(max-width: 767px)").matches;
+        }
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+	}
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+	    window.close();
+        }
+        if (isMobileDevice()) {
+            showPopup();
+        }
     </script>
 </body>
 </html>
